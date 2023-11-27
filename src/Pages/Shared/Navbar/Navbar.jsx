@@ -11,26 +11,29 @@ const Navbar = () => {
      <li className="text-red-700 text-xl font-semibold"><Link to="/">Home</Link></li>
      <li className="text-red-700 text-xl font-semibold"><Link to="/createShop">Create Shop</Link></li>
      <li className="text-red-700 text-xl font-semibold"><Link to="/register">Register</Link></li>
+     <li className="text-red-700 text-xl font-semibold"><Link to="/dashboard">DashBoard</Link></li>
     
-     {user?.email ?<div className="dropdown dropdown-end">
+     {user?.email ? <div className="dropdown dropdown-end">
+            <div className="flex items-center flex-wrap" >
+            <p className="lg:text-xl text-red-700 text-xs">{user.displayName}</p>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
+              <div className="w-10 rounded-full flex">
                 <img src={user.photoURL} alt={user.displayName} />
+                
               </div>
+             
             </label>
-            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-              <li>
-                <button className="btn btn-ghost">{user.displayName}</button>
-              </li>
-
-              <li><button onClick={handleLogOut} className="btn btn-ghost">Logout <IoIosLogOut /></button></li>
-              
-            </ul>
+            
+         <button onClick={handleLogOut} className="text-red-700 flex font-semibold text-xl">Logout<IoIosLogOut className="mt-1"></IoIosLogOut></button>
+            </div>
+          
+           
             </div>
             :
             <li className="text-red-700 text-xl font-semibold"><Link to="/login">Login</Link></li>
         
           }
+
 
    
     </>
