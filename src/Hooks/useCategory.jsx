@@ -3,16 +3,17 @@ import useAxiosPublic from "./useAxiosPublic";
 
 
 const useCategory = () => {
-    const {data: category = [], isPending: loading, refetch} = useQuery({
+    const axiosPublic = useAxiosPublic()
+    const {data: menu= [], isPending: loading, refetch} = useQuery({
         queryKey: ['menu'], 
         queryFn: async() =>{
-            const res = await useAxiosPublic.get('/menu');
+            const res = await axiosPublic.get('/menu');
             return res.data;
         }
     })
 
 
-    return [category, loading, refetch]
+    return [menu, loading, refetch]
 };
 
 export default useCategory;

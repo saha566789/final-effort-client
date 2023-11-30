@@ -9,7 +9,15 @@ import PrivateRoutes from "./PrivateRoutes";
 import DashBoard from "../Layouts/DashBoard";
 import TotalProduct from "../Pages/dashboard/TotalProduct/TotalProduct";
 import Menu from "../Pages/dashboard/Menu/Menu";
-import AllProduct from "../Pages/dashboard/AllProduct/AllProduct";
+
+import UpdateProduct from "../Pages/dashboard/Update/UpdateProduct";
+import ProductSection from "../Pages/dashboard/ProductSection/ProductSection";
+import CheckOut from "../Pages/dashboard/checkOut/CheckOut";
+import AllUsers from "../Pages/dashboard/allUsers/AllUsers";
+import ManagerRoutes from "./ManagerRoutes";
+import Subscription from "../Pages/dashboard/subscribtion/Subscription";
+import Payment from "../Pages/dashboard/Payment/Payment";
+import SalesCollection from "../Pages/dashboard/SalesCollection/SalesCollection";
  export const router = createBrowserRouter([
     {
       path: "/",
@@ -36,17 +44,46 @@ import AllProduct from "../Pages/dashboard/AllProduct/AllProduct";
     },
     {
       path:'/dashboard',
-      element:<DashBoard></DashBoard>,
+      element:<PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>,
       children:[
         {
           path:'/dashboard',
-          element:<TotalProduct></TotalProduct>
+          element:<ManagerRoutes><TotalProduct></TotalProduct></ManagerRoutes>
         },
         {
           path:'/dashboard/menu',
-          element:<Menu></Menu>
+          element:<ManagerRoutes><Menu></Menu></ManagerRoutes>
         },
-        
+        {
+          path:'/dashboard/allProduct',
+          element:<ManagerRoutes><ProductSection></ProductSection></ManagerRoutes>
+        },
+        {
+          path: 'updateItem/:id',
+          element: <ManagerRoutes><UpdateProduct></UpdateProduct></ManagerRoutes>,
+          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+        },
+        {
+          path:'checkOut',
+          element:<ManagerRoutes><CheckOut></CheckOut></ManagerRoutes>
+        },
+        {
+          path:'subscription',
+          element:<Subscription></Subscription>
+        },
+        {
+        path:'/dashboard/users',
+        element:<AllUsers></AllUsers>
+        },
+        {
+          path:'payment/:id',
+          element:<Payment></Payment>,
+       
+        },
+        {
+          path:'sales',
+          element:<SalesCollection></SalesCollection>
+        }
       ]
     }
   ]);

@@ -13,10 +13,11 @@ const AuthProvider = ({children}) => {
 
  const googleProvider = new GoogleAuthProvider()
 
-const googleSign = () =>{
-    setLoading(true)
- return signInWithPopup( auth,googleProvider)
+ const googleSignIn = () => {
+   setLoading(true);
+   return signInWithPopup(auth, googleProvider);
 }
+
  const createUser = (email,password) =>{
     setLoading(true)
     return createUserWithEmailAndPassword(auth,email,password)
@@ -74,7 +75,7 @@ const googleSign = () =>{
     const authInfo ={
         user,
         createUser,
-        googleSign,
+        googleSignIn,
         signIn,
         logout,
         loading,

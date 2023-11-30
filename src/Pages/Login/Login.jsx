@@ -2,6 +2,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from '../../assets/login(2).avif'
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { signIn } = useAuth();
@@ -33,7 +35,11 @@ const Login = () => {
         })
     }
     return (
-        <div className="hero min-h-screen">
+        <div>
+          <Helmet>
+            <title>CircuitFlow | Login</title>
+        </Helmet>
+          <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
           <img src={loginImg} alt="" />
@@ -56,11 +62,14 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
-              <p><small>New Here? <Link to="/register">Create an account</Link> </small></p>
+              <p><small>New Here?Create an account <Link className='text-blue-400' to="/register">Login</Link> </small></p>
             </form>
+            <SocialLogin></SocialLogin>
+      
           </div>
-        </div>
+         </div>
       </div>
+        </div>
     );
 };
 

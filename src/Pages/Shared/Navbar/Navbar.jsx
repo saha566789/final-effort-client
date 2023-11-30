@@ -2,18 +2,36 @@ import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import { IoIosLogOut } from "react-icons/io";
 import logoPic from "../../../assets/inventory-management-4.png"
+import useManger from "../../../Hooks/useManger";
 const Navbar = () => {
     const { user, logout } = useAuth()
+    const isManager = useManger()
   const handleLogOut = () =>{
     logout().then()
   }
+
+  const openDemoVideo = () => {
+    // Replace 'YOUTUBE_VIDEO_URL' with the actual URL of your YouTube video
+    const youtubeVideoUrl = 'https://youtu.be/sL15VM-xN60?si=QootSyDNaSqrFI9Q';
+
+    // Open the YouTube video in a new window
+    window.open(youtubeVideoUrl, '_blank');
+  };
+
     const navOptions = <>
      <li className="text-red-700 text-xl font-semibold"><Link to="/">Home</Link></li>
      <li className="text-red-700 text-xl font-semibold"><Link to="/createShop">Create Shop</Link></li>
      <li className="text-red-700 text-xl font-semibold"><Link to="/register">Register</Link></li>
-     <li className="text-red-700 text-xl font-semibold"><Link to="/dashboard">DashBoard</Link></li>
-    
-     {user?.email ? <div className="dropdown dropdown-end">
+     {/* <li className="text-red-700 text-xl font-semibold"><Link to="/dashboard">DashBoard</Link></li> */}
+     {
+            user && isManager && <li  className="text-red-700 text-xl font-semibold"><Link to="/dashboard">Dashboard</Link></li>
+        }
+     {user?.email ?
+     <>
+     {/* <li className="text-red-700 text-xl font-semibold">
+            <Link to="/dashboard">{user.store ? "Create shop" : "Dashboard"}</Link>
+          </li> */}
+     <div className="dropdown dropdown-end">
             <div className="flex items-center flex-wrap" >
             <p className="lg:text-xl text-red-700 text-xs">{user.displayName}</p>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -29,6 +47,7 @@ const Navbar = () => {
           
            
             </div>
+            </>
             :
             <li className="text-red-700 text-xl font-semibold"><Link to="/login">Login</Link></li>
         
@@ -57,7 +76,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn text-red-700 text-lg">Watch Demo</a>
+    <a onClick={openDemoVideo} className="btn text-red-700 text-lg">Watch Demo</a>
   </div>
 </div>
     );

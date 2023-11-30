@@ -1,11 +1,15 @@
 
 import toast from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth"
+import { Helmet } from "react-helmet-async";
+
 
 const CreateShop = () => {
     const {user} = useAuth()
-    const handleAddProduct = (e) => {
-
+    
+    const handleAddProduct = async(e) => {
+      
+      
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -17,6 +21,7 @@ const CreateShop = () => {
         
         const newProduct = { name, image, info,location,email,shopName }
         console.log(newProduct)
+       
         fetch('http://localhost:5000/server', {
             method: 'POST',
             headers: {
@@ -55,10 +60,13 @@ const CreateShop = () => {
                    
                  }
             })
+    
        
     }
     return (
-        <div className="bg-[#F4F3F0]">
+      <div>
+        <Helmet><title>CircuitFlow | Create shop</title></Helmet>
+          <div className="bg-[#F4F3F0]">
              <h2 className="lg:text-3xl text-xl font-extrabold text-center">Create a shop</h2>
             <div className=" lg:p-24">
        
@@ -125,11 +133,13 @@ const CreateShop = () => {
                         <input type="text" name="shopName" readOnly defaultValue={user.displayName} placeholder="Shop-Owner Name" className="input input-bordered w-full" />
                     </label>
                 </div>
+                
             </div>
             <input type="submit" value="create shop" className="btn btn-block bg-slate-800 text-white " />
         </form>
     </div>
         </div>
+      </div>
     );
 };
 
