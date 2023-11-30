@@ -30,13 +30,13 @@ const SalesCollection = () => {
     const pages = [...Array(numberOfPages).keys()];
 
     useEffect(() => {
-        fetch(`http://localhost:5000/salesCount`)
+        fetch(`https://final-effort-server-pi.vercel.app/salesCount`)
             .then(res => res.json())
             .then(data => setCount(data.count));
     }, []);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/sales?page=${currentPage}&size=${itemsPerPage}`)
+        fetch(`https://final-effort-server-pi.vercel.app/sales?page=${currentPage}&size=${itemsPerPage}`)
             .then(res => res.json())
             .then(data => setSales(data));
     }, [currentPage, itemsPerPage, salesData]);

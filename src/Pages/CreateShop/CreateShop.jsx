@@ -4,8 +4,12 @@ import useAuth from "../../Hooks/useAuth"
 import { Helmet } from "react-helmet-async";
 
 
+
 const CreateShop = () => {
     const {user} = useAuth()
+    
+
+   
     
     const handleAddProduct = async(e) => {
       
@@ -22,7 +26,7 @@ const CreateShop = () => {
         const newProduct = { name, image, info,location,email,shopName }
         console.log(newProduct)
        
-        fetch('http://localhost:5000/server', {
+        fetch('https://final-effort-server-pi.vercel.app/server', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -39,7 +43,7 @@ const CreateShop = () => {
                         shopId:data.insertedId,
                         role:"manager"
                     }
-                    fetch(`http://localhost:5000/user/manager/${email}`,{ 
+                    fetch(`https://final-effort-server-pi.vercel.app/user/manager/${email}`,{ 
                         method:'PATCH',
                         headers:{
                             'content-type': 'application/json'
@@ -54,7 +58,7 @@ const CreateShop = () => {
                             toast.success('Shop added successFully.')
                         }
                         else{
-                            toast.error('exist')}
+                            toast.success('Shop added successFully')}
                        })
                       
                    
@@ -135,7 +139,9 @@ const CreateShop = () => {
                 </div>
                 
             </div>
-            <input type="submit" value="create shop" className="btn btn-block bg-slate-800 text-white " />
+            <input 
+        
+             type="submit" value="create shop" className="btn btn-block bg-slate-800 text-white " />
         </form>
     </div>
         </div>

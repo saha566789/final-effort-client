@@ -61,7 +61,7 @@ import SalesCollection from "../Pages/dashboard/SalesCollection/SalesCollection"
         {
           path: 'updateItem/:id',
           element: <ManagerRoutes><UpdateProduct></UpdateProduct></ManagerRoutes>,
-          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+          // loader: ({params}) => fetch(`https://final-effort-server-pi.vercel.app/menu/${params.id}`)
         },
         {
           path:'checkOut',

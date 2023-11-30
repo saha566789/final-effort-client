@@ -1,14 +1,22 @@
 import { Link } from "react-router-dom";
-import useCategory from "../../../Hooks/useCategory";
+// import useCategory from "../../../Hooks/useCategory";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
-const AllProduct = ({total}) => {
-    const [menu,refetch] =useCategory()
+const AllProduct = () => {
+    // const [menu,refetch] =useCategory()
     const axiosPublic = useAxiosPublic()
-
-
+    
+    const { data: total = [],refetch } = useQuery({
+        queryKey: ['total'],
+        queryFn: async () => {
+          const response = await axiosPublic.get('/menu');
+          return response.data;
+        },
+      });
+    console.log(total)
     const handleDeleteItem = (item) => {
         Swal.fire({
             title: "Are you sure?",
@@ -21,6 +29,7 @@ const AllProduct = ({total}) => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosPublic.delete(`/menu/${item._id}`);
+              
                 // console.log(res.data);
                 if (res.data.deletedCount > 0) {
                     // refetch to update the ui
@@ -28,7 +37,7 @@ const AllProduct = ({total}) => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: `${item.name} has been deleted`,
+                        title: "product has been deleted",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -38,6 +47,8 @@ const AllProduct = ({total}) => {
             }
         });
     }
+
+
     return (
         <div>
              <div>

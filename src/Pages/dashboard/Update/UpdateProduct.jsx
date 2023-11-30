@@ -1,7 +1,9 @@
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
-import { useLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+// import { useLoaderData } from "react-router-dom";
 
 
 
@@ -12,12 +14,19 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdateProduct = () => {
-    const {name,location,quantity,discount,sellingPrice,description,margin,  _id} = useLoaderData();
-    
+    // const {name,location,quantity,discount,sellingPrice,description,margin,  _id} = useLoaderData();
+    // console.log(name)
+    const [update,setUpdate] = useState({})
+    const {id} = useParams()
+    console.log(id)
     const { register, handleSubmit } = useForm();
     const axiosPublic = useAxiosPublic()
-   
-    
+   useEffect(()=>{
+    fetch(`https://final-effort-server-pi.vercel.app/menu/${id}`)
+    .then(res=>res.json())
+    .then(data=>setUpdate(data))
+   },[id])
+    console.log(update)
     const onSubmit = async (data) => {
         console.log(data)
         // image upload to imgbb and then get an url
@@ -49,9 +58,8 @@ const UpdateProduct = () => {
                 description: data.description,
                 sellingPrice:data.sellingPrice
             }
-           
-            const menuRes = await axiosPublic.patch(`/menu/${_id}`, menuItem);
-            console.log(menuRes.data)
+            const menuRes = await axiosPublic.patch(`/menu/${id}`, menuItem);
+            // console.log(menuRes.data)
             if(menuRes.data.modifiedCount > 0){
                 // show success popup
                 // reset();
@@ -75,7 +83,7 @@ const UpdateProduct = () => {
                 </label>
                 <input
                     type="text"
-                    defaultValue={name}
+                    defaultValue={update.name}
                     placeholder="Product Name"
                     {...register('name', { required: true })}
                     required
@@ -87,7 +95,7 @@ const UpdateProduct = () => {
                 </label>
                 <input
                     type="text"
-                    defaultValue={location}
+                    defaultValue={update.location}
                     placeholder=" Product Location"
                     {...register('location', { required: true })}
                     required
@@ -99,7 +107,7 @@ const UpdateProduct = () => {
                 </label>
                 <input
                     type="number"
-                    defaultValue={margin}
+                    defaultValue={update.margin}
                     placeholder="  Profit Margin"
                     {...register('margin', { required: true })}
                     required
@@ -111,7 +119,7 @@ const UpdateProduct = () => {
                 </label>
                 <input
                     type="number"
-                    defaultValue={discount}
+                    defaultValue={update.discount}
                     placeholder=" Discount"
                     {...register('discount', { required: true })}
                     required
@@ -125,7 +133,7 @@ const UpdateProduct = () => {
                 </label>
                 <input
                     type="number"
-                    defaultValue={quantity}
+                    defaultValue={update.quantity}
                     placeholder="Product Quantity"
                     {...register('quantity', { required: true })}
                     required
@@ -142,8 +150,8 @@ const UpdateProduct = () => {
                     <span className="label-text"> Buying Price*</span>
                 </label>
                 <input
-                    type="number"
-                    defaultValue={sellingPrice}
+                    type="text"
+                    defaultValue={update.sellingPrice}                    
                     placeholder=" Buying Price"
                     {...register('sellingPrice', { required: true })}
                     required
@@ -154,7 +162,9 @@ const UpdateProduct = () => {
                 <label className="label">
                     <span className="label-text"> Description</span>
                 </label>
-                <textarea defaultValue={description} {...register(' description')} className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+                <textarea
+                 defaultValue={update.description} 
+                 {...register(' description')} className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
             </div>
 
             <div className="form-control w-full my-6">
