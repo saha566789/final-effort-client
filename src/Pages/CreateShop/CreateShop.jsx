@@ -2,12 +2,13 @@
 import toast from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth"
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 
 
 
 const CreateShop = () => {
     const {user} = useAuth()
-    
+    const navigate = useNavigate();
 
    
     
@@ -24,9 +25,11 @@ const CreateShop = () => {
         const shopName = form.shopName.value;
         
         const newProduct = { name, image, info,location,email,shopName }
-        console.log(newProduct)
+        // console.log(newProduct)
        
-        fetch('https://final-effort-server-pi.vercel.app/server', {
+         // Check if the user already has a shop
+    
+         fetch('http://localhost:5000/server', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +46,7 @@ const CreateShop = () => {
                         shopId:data.insertedId,
                         role:"manager"
                     }
-                    fetch(`https://final-effort-server-pi.vercel.app/user/manager/${email}`,{ 
+                    fetch(`http://localhost:5000/user/manager/${email}`,{ 
                         method:'PATCH',
                         headers:{
                             'content-type': 'application/json'
@@ -56,9 +59,10 @@ const CreateShop = () => {
                         console.log(data)
                         if(data.modifiedCount>0){
                             toast.success('Shop added successFully.')
+                            navigate('/dashboard')
                         }
                         else{
-                            toast.success('Shop added successFully')}
+                            toast.error('Shop already added successFully')}
                        })
                       
                    
@@ -70,13 +74,13 @@ const CreateShop = () => {
     return (
       <div>
         <Helmet><title>CircuitFlow | Create shop</title></Helmet>
-          <div className="bg-[#F4F3F0]">
-             <h2 className="lg:text-3xl text-xl font-extrabold text-center">Create a shop</h2>
-            <div className=" lg:p-24">
+          <div className="bg-[#F4F3F0] lg:h-[100vh] h-[80vh]">
+          
+            <div className="lg:p-24">
        
-        <form onSubmit={handleAddProduct}>
+        <form onSubmit={handleAddProduct} className="lg:mt-12 border-2 border-white lg:border-none">
             {/* form name and image row */}
-            <div className="md:flex  mb-8">
+            <div className="md:flex  mb-8 lg:mt-0 mt-16">
                 <div className="form-control   md:w-1/2">
                     <label className="label">
                         <span className="label-text">Shop Name</span>

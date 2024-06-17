@@ -8,7 +8,7 @@ import CreateShop from "../Pages/CreateShop/CreateShop";
 import PrivateRoutes from "./PrivateRoutes";
 import DashBoard from "../Layouts/DashBoard";
 import TotalProduct from "../Pages/dashboard/TotalProduct/TotalProduct";
-import Menu from "../Pages/dashboard/Menu/Menu";
+// import Menu from "../Pages/dashboard/Menu/Menu";
 
 import UpdateProduct from "../Pages/dashboard/Update/UpdateProduct";
 import ProductSection from "../Pages/dashboard/ProductSection/ProductSection";
@@ -50,10 +50,10 @@ import SalesCollection from "../Pages/dashboard/SalesCollection/SalesCollection"
           path:'/dashboard',
           element:<ManagerRoutes><TotalProduct></TotalProduct></ManagerRoutes>
         },
-        {
-          path:'/dashboard/menu',
-          element:<ManagerRoutes><Menu></Menu></ManagerRoutes>
-        },
+        // {
+        //   path:'/dashboard/menu',
+        //   element:<ManagerRoutes><Menu></Menu></ManagerRoutes>
+        // },
         {
           path:'/dashboard/allProduct',
           element:<ManagerRoutes><ProductSection></ProductSection></ManagerRoutes>
@@ -61,7 +61,7 @@ import SalesCollection from "../Pages/dashboard/SalesCollection/SalesCollection"
         {
           path: 'updateItem/:id',
           element: <ManagerRoutes><UpdateProduct></UpdateProduct></ManagerRoutes>,
-          // loader: ({params}) => fetch(`https://final-effort-server-pi.vercel.app/menu/${params.id}`)
+          // loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
         },
         {
           path:'checkOut',

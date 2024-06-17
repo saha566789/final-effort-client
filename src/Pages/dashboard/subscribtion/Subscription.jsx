@@ -10,12 +10,12 @@ const Subscription = () => {
   
     
     // useEffect(() => {
-    //     fetch('https://final-effort-server-pi.vercel.app/doller')
+    //     fetch('http://localhost:5000/doller')
     //     .then(res => res.json())
     //         .then(data => setCost(data))
     // }, [])
     useEffect(() => {
-        fetch('https://final-effort-server-pi.vercel.app/doller')
+        fetch('http://localhost:5000/doller')
           .then(res => res.json())
           .then(data => setCost(data))
           .catch(error => console.error("Error fetching data:", error));

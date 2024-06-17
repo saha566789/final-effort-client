@@ -3,7 +3,7 @@ import logoPic from "../../../assets/inventory-management-4.png"
 const Footer = () => {
     return (
         <footer>
-            <div className="footer p-10 bg-neutral text-neutral-content">
+            <div className="footer p-10 bg-neutral text-neutral-content mt-96 lg:mt-0">
               
                     <aside>
                     <img className="w-10" src={logoPic} alt="" />
@@ -33,7 +33,7 @@ const Footer = () => {
             </div>
             <div className="p-4 footer-center bg-gray-700 text-white">
                 <div>
-                    <p>Copyright © 2023 - All right reserved by CircuitFlow.</p>
+                    <p className="lg:text-lg text-xs">Copyright © 2023 - All right reserved by CircuitFlow.</p>
                 </div>
             </div>
         </footer>

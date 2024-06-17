@@ -35,7 +35,7 @@ const CheckFrom = ({id}) => {
        }
     },[server])
     useEffect(() => {
-        fetch(`https://final-effort-server-pi.vercel.app/doller/${id}`)
+        fetch(`http://localhost:5000/doller/${id}`)
             .then(res => res.json())
             .then(data => setCost(data))
     }, [id])

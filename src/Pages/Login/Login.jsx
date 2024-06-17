@@ -1,9 +1,9 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from '../../assets/login(2).avif'
 import useAuth from '../../Hooks/useAuth';
-import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const { signIn } = useAuth();
@@ -23,29 +23,33 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "User logged in successfully",
-                showConfirmButton: false,
-                timer: 1500
+            toast.success('🦄 Wow so easy!', {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition:" Bounce",
               });
-          
             navigate(from, { replace: true });
         })
     }
     return (
-        <div>
+        <div className='mt-3'>
           <Helmet>
             <title>CircuitFlow | Login</title>
         </Helmet>
-          <div className="hero min-h-screen">
+          <div className="hero Lg:min-h-screen lg:h-[100vh]  h-[80vh]">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left mt-4">
           <img src={loginImg} alt="" />
           </div>
+          {/* form */}
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleLogin} className="card-body">
+            <form onSubmit={handleLogin} className="card-body h-[320px]">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -62,9 +66,12 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
-              <p><small>New Here?Create an account <Link className='text-blue-400' to="/register">Login</Link> </small></p>
+              <p><small>New Here?Create an account . <Link className='text-blue-400 text-sm lg:text-lg underline' to="/register">Register</Link> </small></p>
+          
             </form>
-            <SocialLogin></SocialLogin>
+           <div className='mt-4'>
+           <SocialLogin></SocialLogin>
+           </div>
       
           </div>
          </div>

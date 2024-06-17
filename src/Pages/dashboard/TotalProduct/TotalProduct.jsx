@@ -18,7 +18,7 @@ const TotalProduct = () => {
   //  console.log(limit[0])
    const navigate = useNavigate()
     useEffect(() => {
-        fetch(`https://final-effort-server-pi.vercel.app/menu?email=${user?.email}`)
+        fetch(`http://localhost:5000/menu?email=${user?.email}`)
 
             .then(res => res.json())
             .then(data => setTotal(data))

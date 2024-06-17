@@ -22,7 +22,7 @@ const UpdateProduct = () => {
     const { register, handleSubmit } = useForm();
     const axiosPublic = useAxiosPublic()
    useEffect(()=>{
-    fetch(`https://final-effort-server-pi.vercel.app/menu/${id}`)
+    fetch(`http://localhost:5000/menu/${id}`)
     .then(res=>res.json())
     .then(data=>setUpdate(data))
    },[id])

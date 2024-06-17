@@ -65,13 +65,13 @@ const Register = () => {
     <Helmet>
       <title>CircuitFlow | Register</title>
     </Helmet>
-     <div className="hero min-h-screen">
+     <div className="hero lg:min-h-screen lg:h-0 h-[130vh]">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
+        <div className="text-center lg:text-left mt-4">
           <img src={registerImg} alt="" />
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleRegister} className="card-body">
+          <form onSubmit={handleRegister} className="card-body lg:h-[500px]">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -107,7 +107,7 @@ const Register = () => {
           </form>
           <SocialLogin></SocialLogin>
         </div>
-
+        
       </div>
     </div>
    </div>

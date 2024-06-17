@@ -13,6 +13,9 @@ import {
 } from '@tanstack/react-query'
 import { Toaster } from 'react-hot-toast';
 import {  HelmetProvider } from 'react-helmet-async';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -22,6 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
    <QueryClientProvider client={queryClient}>
    <RouterProvider router={router} />
    <Toaster/>
+   <ToastContainer />
     </QueryClientProvider>
   </AuthProvider>
   </HelmetProvider>

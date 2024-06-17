@@ -4,7 +4,7 @@ import Faq from "../../FAQ/Faq";
 import NewsLetter from "../../Newsletter/NewsLetter";
 
 import Banner from "../banner/Banner";
-import Contact from "../../Contact/Contact";
+// import Contact from "../../Contact/Contact";
 
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
                 <title>CircuitFlow | Home</title>
             </Helmet>
             <Banner></Banner>
-            <Contact></Contact>
+            {/* <Contact></Contact> */}
             <Faq></Faq>
             <NewsLetter></NewsLetter>
             <About></About>
