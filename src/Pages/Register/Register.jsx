@@ -65,7 +65,7 @@ const Register = () => {
     <Helmet>
       <title>CircuitFlow | Register</title>
     </Helmet>
-     <div className="hero lg:min-h-screen lg:h-0 h-[130vh]">
+     <div className="hero lg:min-h-screen lg:h-0 h-[150vh]">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left mt-4">
           <img src={registerImg} alt="" />

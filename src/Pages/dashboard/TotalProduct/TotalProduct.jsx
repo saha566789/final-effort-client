@@ -31,13 +31,13 @@ const TotalProduct = () => {
   console.log(total.length)
     return (
       <div>
-          <div className="border-t-2 border-b-2 flex justify-between">
+          <div className="border-t-2 border-b-2 lg:flex lg:flex-row flex-col justify-between">
           
           <h2>
               {
                    total.length?
                    <div>total {total.length} Products</div>: 
-                   <div className="ml-96">No product</div>
+                   <div className="lg:ml-96 ml-6">No product</div>
                   
               }
             

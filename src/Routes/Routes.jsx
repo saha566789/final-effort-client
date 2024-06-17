@@ -18,6 +18,7 @@ import ManagerRoutes from "./ManagerRoutes";
 import Subscription from "../Pages/dashboard/subscribtion/Subscription";
 import Payment from "../Pages/dashboard/Payment/Payment";
 import SalesCollection from "../Pages/dashboard/SalesCollection/SalesCollection";
+import AboutUs from "../Pages/AboutUs/AboutUs";
  export const router = createBrowserRouter([
     {
       path: "/",
@@ -39,6 +40,10 @@ import SalesCollection from "../Pages/dashboard/SalesCollection/SalesCollection"
         {
             path:'/createShop',
            element:<PrivateRoutes><CreateShop></CreateShop></PrivateRoutes>
+        },
+        {
+          path:"/aboutUs",
+          element:<AboutUs></AboutUs>
         }
       ]
     },

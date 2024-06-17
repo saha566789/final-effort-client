@@ -41,7 +41,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="navbar bg-white fixed z-30 lg:w-[70%] lg:ml-48 lg:mt-2  lg:rounded-full">
+        <div className="navbar bg-white fixed z-30 lg:w-[70%] lg:ml-48 lg:mt-2 mt-0  lg:rounded-full">
             <div className="navbar-start lg:ml-4">
                 {/* Mobile Menu Toggle */}
                 <div className="dropdown relative lg:hidden">

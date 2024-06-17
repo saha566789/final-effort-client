@@ -64,15 +64,15 @@ const SalesCollection = () => {
         <Helmet>
             <title>CircuitFlow | sales collection</title>
         </Helmet>
-         <div className="lg:flex lg:flex-row flex-col gap-2">
-            <div className="card w-72 bg-yellow-200 text-black">
+         <div className="lg:flex lg:flex-row flex-col gap-6">
+            <div className="card w-72 bg-yellow-200 text-black  mb-4">
                 <div className="card-body">
                     <h2 className="card-title">Total Sales</h2>
                     <p>{salesData.length}</p>
                    
                 </div>
             </div>
-            <div className="card w-72 bg-blue-300 text-black">
+            <div className="card w-72 bg-blue-300 text-black mb-4">
                 <div className="card-body">
                     <h2 className="card-title">Total Invest</h2>
                     <p>${totalInvest}</p>

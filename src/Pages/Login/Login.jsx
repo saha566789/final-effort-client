@@ -42,13 +42,14 @@ const Login = () => {
           <Helmet>
             <title>CircuitFlow | Login</title>
         </Helmet>
-          <div className="hero Lg:min-h-screen lg:h-[100vh]  h-[80vh]">
+          <div className="hero Lg:min-h-screen lg:h-[100vh]  h-[100vh]">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left mt-4">
           <img src={loginImg} alt="" />
           </div>
           {/* form */}
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <h2 className='text-center lg:text-3xl'>Login</h2>
             <form onSubmit={handleLogin} className="card-body h-[320px]">
               <div className="form-control">
                 <label className="label">
