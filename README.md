@@ -1,4 +1,5 @@
-# CircuitFlow - Inventory Management website
+# CircuitFlow - Inventory Management website 
+live:https://circuitflow-website.vercel.app/
 
 ## Overview
 Welcome to  CircuitFlow ,Your Ultimate Inventory Solution!
