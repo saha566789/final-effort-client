@@ -20,6 +20,7 @@ we understand the complexities and challenges that come with managing inventory 
 ## Technologies Used
 - react-js
 - taildwind css
+- firebase
 - mongodb
 - node js
 - express js
